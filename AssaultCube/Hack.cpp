@@ -1,7 +1,8 @@
 #define WIN32_LEAN_AND_MEAN
+#include "PointersAndOffsets.h"
 #include <Windows.h>
+#include <TlHelp32.h>
 #include <iostream>
-
 
 int main()
 {
@@ -20,11 +21,12 @@ int main()
 	//Open Handle to Process by pID, with all access. (false to not inherit)
 	HANDLE pHandle = OpenProcess(PROCESS_ALL_ACCESS, false, pID);
 
+	ac::localEntity* localPlayer = new ac::localEntity();
 
 
-	//ReadProcessMemory(pHandle, (LPVOID)ammo_address, &ammo, sizeof(ammo), 0);
+	//ReadProcessMemory(pHandle, (LPVOID)localPlayer->entity_ptr, (LPVOID)localPlayer->entity, sizeof(DWORD), 0);
 	//ReadProcessMemory(pHandle, (LPVOID)ammoReserve_address, &ammoReserve, sizeof(ammo), 0);
-
+	//std::cout << "local entity address -> " << localPlayer->entity << std::endl;
 	//std::cout << "Current Ammo: " << ammo << std::endl;
 	//std::cout << "Current Ammo Reserve: " << ammoReserve << std::endl;
 	std::cout << "Time for Unlimited Ammo :)" << std::endl;
