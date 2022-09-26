@@ -17,7 +17,7 @@ public:
 		GetWindowThreadProcessId(hWnd, &pID);
 
 		//Open Handle to Process with full access by pID
-		HANDLE pHandle = OpenProcess(PROCESS_ALL_ACCESS, false, pID);
+		pHandle = OpenProcess(PROCESS_ALL_ACCESS, false, pID);
 
 
 	}

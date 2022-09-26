@@ -10,8 +10,14 @@ int main()
 	Memory mem("AssaultCube");
 
 	std::cout << "Process Id: " << mem.pID << std::endl;
+	
+	std::cout << "Handle to Process: 0x" << mem.pHandle << std::endl;
+	
+	std::cout << "Base Address of Module: 0x" << mem.GetModuleAddress("ac_client.exe") << std::endl;
 
-	std::cout << "Module Address: " << mem.GetModuleAddress("ac_client.exe") << std::endl;
+	DWORD localPlayer = mem.readMemory<DWORD>(mem.GetModuleAddress("ac_client.exe") + LOCAL_ENTITY);
+
+	std::cout << "Local Player: 0x" << localPlayer << std::endl;
 
 
 
