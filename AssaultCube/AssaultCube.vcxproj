@@ -22,6 +22,7 @@
     <ClCompile Include="Hack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Memory.h" />
     <ClInclude Include="PointersAndOffsets.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
