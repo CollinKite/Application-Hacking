@@ -1,10 +1,7 @@
-#define WIN32_LEAN_AND_MEAN
 #include "PointersAndOffsets.h"
 #include "Memory.h"
-#include <Windows.h>
-#include <TlHelp32.h>
 #include <iostream>
-
+#include <iomanip> //Used For Converting int to hex
 int main()
 {
 	Memory mem("AssaultCube");
@@ -13,11 +10,30 @@ int main()
 	
 	std::cout << "Handle to Process: 0x" << mem.pHandle << std::endl;
 	
-	std::cout << "Base Address of Module: 0x" << mem.GetModuleAddress("ac_client.exe") << std::endl;
+	std::cout << "Base Address of Module: 0x" << std::hex << mem.GetModuleAddress("ac_client.exe") << std::endl;
 
 	DWORD localPlayer = mem.readMemory<DWORD>(mem.GetModuleAddress("ac_client.exe") + LOCAL_ENTITY);
 
-	std::cout << "Local Player: 0x" << localPlayer << std::endl;
+	std::cout << "Local Player: 0x" << std::hex << localPlayer << std::endl;
+
+	std::cout << "\nPress Enter to Continue";
+	std::cin.ignore();
+
+	Player player(localPlayer);
+
+	std::cout
+
+	bool quit = false;
+
+	while (!quit)
+	{
+		if (GetKeyState(VK_ESCAPE))
+			{
+				quit = true;
+			}
+	}
+
+	
 
 
 
